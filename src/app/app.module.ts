@@ -3,16 +3,19 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
+import { MapService } from './services/map.service';
+import { MapBoxComponent } from './map-box/map-box.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MapBoxComponent
   ],
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [MapService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
