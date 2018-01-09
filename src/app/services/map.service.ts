@@ -12,7 +12,8 @@ export class MapService {
   }
 
   getPolygons() {
-    return this.db.collection('polygons');
+    return this.db.collection('geoPolygons');
+    // return this.db.collection('polygons');
   }
 
   getPolygonById(id: string) {
@@ -22,18 +23,19 @@ export class MapService {
   addPolygon(polygon) {
     let id = this.db.createId();
     polygon.id = id;
-    return this.getPolygonById(id).set(polygon);
+    console.log(polygon);
+    return this.getPolygonById(id).set({ id: id, geometry: JSON.stringify(polygon) });
   }
 
   updatePolygon(polygon) {
-    const stubPolygon = { ...polygon };
-    stubPolygon.paths = fb.firestore.FieldValue.delete();
-    const polyRef = this.getPolygonById(polygon.id).ref;
-    let batch = this.db.firestore.batch();
-    batch.update(polyRef, stubPolygon);
-    batch.update(polyRef, polygon);
-    return batch.commit();
-    // return this.getPolygonById(polygon.id).update(polygon);
+    // const stubPolygon = { ...polygon };
+    // stubPolygon.paths = fb.firestore.FieldValue.delete();
+    // const polyRef = this.getPolygonById(polygon.id).ref;
+    // let batch = this.db.firestore.batch();
+    // batch.update(polyRef, stubPolygon);
+    // batch.update(polyRef, polygon);
+    // return batch.commit();
+    return this.getPolygonById(polygon.id).update({ geometry: JSON.stringify(polygon) });
   }
 
   // setActivePolygon(polygon) {

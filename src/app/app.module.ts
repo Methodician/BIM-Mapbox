@@ -10,12 +10,14 @@ import { AppComponent } from './app.component';
 import { MapService } from './services/map.service';
 import { MapBoxComponent } from './map-box/map-box.component';
 import { environment } from '../environments/environment';
+import { MboxComponent } from './mbox/mbox.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    MapBoxComponent
+    MapBoxComponent,
+    MboxComponent
   ],
   imports: [
     BrowserModule,
