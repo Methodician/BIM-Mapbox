@@ -28,13 +28,6 @@ export class MapService {
   }
 
   updatePolygon(polygon) {
-    // const stubPolygon = { ...polygon };
-    // stubPolygon.paths = fb.firestore.FieldValue.delete();
-    // const polyRef = this.getPolygonById(polygon.id).ref;
-    // let batch = this.db.firestore.batch();
-    // batch.update(polyRef, stubPolygon);
-    // batch.update(polyRef, polygon);
-    // return batch.commit();
     return this.getPolygonById(polygon.id).update({ geometry: JSON.stringify(polygon) });
   }
 
