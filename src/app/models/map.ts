@@ -16,18 +16,18 @@ export interface IGeoJson {
 export class GeoJson implements IGeoJson {
     type = 'Feature';
     geometry: IGeometry;
-    constructor(type, coordinates) {
-        this.geometry = {
-            type: type,
-            coordinates: coordinates
-        }
-    }
-    // constructor(type, coordinates, public properties?) {
+    // constructor(type, coordinates) {
     //     this.geometry = {
     //         type: type,
     //         coordinates: coordinates
     //     }
     // }
+    constructor(type, coordinates, public properties?) {
+        this.geometry = {
+            type: type,
+            coordinates: coordinates
+        }
+    }
 }
 export class FeatureCollection {
     type = 'FeatureCollection'
